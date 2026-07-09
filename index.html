@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAI, HSIN HUI | Frontend Engineer Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae2fd',
+              300: '#7ccafd',
+              400: '#38b0f8',
+              500: '#0ea4e9',
+              600: '#0285c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 1.8cm 1.6cm 1.8cm 1.6cm;
+      }
+
+      .no-print,
+      nav,
+      button,
+      #settings-modal,
+      #toast,
+      .external-icon {
+        display: none !important;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+        color: #1e293b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      main {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .print-container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      header {
+        padding-bottom: 1.5rem !important;
+        border-bottom: 2px solid #e2e8f0 !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      h1 {
+        color: #0f172a !important;
+        font-size: 24pt !important;
+        line-height: 1.2 !important;
+      }
+
+      h2 {
+        font-size: 11pt !important;
+        color: #0369a1 !important;
+        margin-bottom: 0.75rem !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      p,
+      li {
+        font-size: 10pt !important;
+        line-height: 1.6 !important;
+        color: #334155 !important;
+        text-align: justify !important;
+      }
+
+      .contact-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 0.35rem !important;
+      }
+
+      .skills-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+      }
+
+      .skills-card {
+        background-color: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 0.75rem !important;
+        border-radius: 0.5rem !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+
+      .skill-badge {
+        background-color: #ffffff !important;
+        color: #334155 !important;
+        border: 1px solid #cbd5e1 !important;
+        font-size: 8pt !important;
+        padding: 0.1rem 0.4rem !important;
+        border-radius: 0.25rem !important;
+        box-shadow: none !important;
+      }
+
+      .timeline-container {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .timeline-container::before {
+        display: none !important;
+      }
+
+      .work-item {
+        padding-left: 0 !important;
+        margin-bottom: 1.5rem !important;
+        page-break-inside: avoid;
+      }
+
+      .work-item-bullet {
+        display: none !important;
+      }
+
+      .work-header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+      }
+
+      .work-title {
+        font-size: 11pt !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+      }
+
+      .work-meta {
+        font-size: 9.5pt !important;
+        color: #475569 !important;
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      section {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col justify-center selection:bg-brand-500 selection:text-white py-6 sm:py-12">
+
+  <div id="toast" class="no-print fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 transition-all duration-300 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-4 py-2.5 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2">
+    <i data-lucide="check-circle" class="h-4 w-4 text-emerald-500 dark:text-emerald-600"></i>
+    <span id="toast-message">Copied to clipboard</span>
+  </div>
+
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-8">
+    <article class="print-container bg-white dark:bg-slate-900 rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-200/60 dark:border-slate-800/80 p-6 sm:p-10 md:p-12 transition-all">
+
+      <!-- Resume Header Section -->
+      <header class="border-b border-slate-100 dark:border-slate-800 pb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+              LAI, HSIN HUI
+            </h1>
+            <p class="text-lg font-semibold text-brand-600 dark:text-brand-400 mt-2 tracking-wide uppercase">
+              Frontend Engineer
+            </p>
+          </div>
+
+          <div class="contact-info flex flex-wrap md:flex-col gap-3 md:items-end text-sm text-slate-600 dark:text-slate-300">
+            <button onclick="copyEmail()" class="group flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-400 transition-colors" title="Click to copy email">
+              <i data-lucide="mail" class="h-4 w-4 text-slate-400 dark:text-slate-500 group-hover:text-brand-500 transition-colors"></i>
+              <span>shinhuei1@gmail.com</span>
+              <i data-lucide="copy" class="h-3 w-3 opacity-0 group-hover:opacity-100 text-slate-400 transition-opacity no-print"></i>
+            </button>
+
+            <a href="https://medium.com/@shinhuei1" id="medium-link" target="_blank" class="flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+              <i data-lucide="book-open" class="h-4 w-4 text-slate-400 dark:text-slate-500"></i>
+              <span>Medium Blog</span>
+              <i data-lucide="external-link" class="external-icon h-3 w-3 text-slate-300 dark:text-slate-600 no-print"></i>
+            </a>
+
+            <a href="https://github.com/ba1679" id="github-link" target="_blank" class="flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+              <i data-lucide="github" class="h-4 w-4 text-slate-400 dark:text-slate-500"></i>
+              <span>GitHub</span>
+              <i data-lucide="external-link" class="external-icon h-3 w-3 text-slate-300 dark:text-slate-600 no-print"></i>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Professional Summary -->
+      <section class="mt-8">
+        <h2 class="text-sm font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase flex items-center gap-2 mb-4">
+          <i data-lucide="user" class="h-4 w-4 no-print"></i> Professional Summary
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-[15px] text-justify">
+          Results-driven Frontend Engineer with 5+ years of experience specializing in React, Next.js, <strong>Frontend Architecture</strong>, and <strong>Developer Experience (DX)</strong> optimization. Proven track record in developing global scale products, including architecting a WebRTC-based data delivery solution that cut cloud infrastructure overhead by 40%. Adept at introducing AI-assisted workflows and developer productivity automations within enterprise environments, blending engineering velocity with robust system <strong>Scalability</strong> and delivery excellence.
+        </p>
+      </section>
+
+      <!-- Technical Skills Section -->
+      <section class="mt-8 border-t border-slate-100 dark:border-slate-800/80 pt-8">
+        <h2 class="text-sm font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase flex items-center gap-2 mb-5">
+          <i data-lucide="code" class="h-4 w-4 no-print"></i> Technical Skills
+        </h2>
+
+        <div class="skills-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="skills-card p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/50">
+            <h3 class="text-sm font-bold text-slate-950 dark:text-white mb-2">Frontend & Core</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">React / React Hooks</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Next.js</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">TypeScript</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skills-card p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/50">
+            <h3 class="text-sm font-bold text-slate-950 dark:text-white mb-2">State & Data Management</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Redux / Zustand</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">TanStack Query / RTK Query</span>
+            </div>
+          </div>
+
+          <div class="skills-card p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/50">
+            <h3 class="text-sm font-bold text-slate-950 dark:text-white mb-2">Protocols & Cross-platform Alignment</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">WebRTC (Data Channel)</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">WebSocket</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Cross-platform WebView</span>
+            </div>
+          </div>
+
+          <div class="skills-card p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800/50">
+            <h3 class="text-sm font-bold text-slate-950 dark:text-white mb-2">AI Tooling & Developer Productivity</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Claude Code</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Claude Code Skill</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">OpenSpec</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">Workflow Automation</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">GitHub Actions</span>
+              <span class="skill-badge px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">GA4 / GTM / Amplitude</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience Section -->
+      <section class="mt-8 border-t border-slate-100 dark:border-slate-800/80 pt-8">
+        <h2 class="text-sm font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase flex items-center gap-2 mb-6">
+          <i data-lucide="briefcase" class="h-4 w-4 no-print"></i> Work Experience
+        </h2>
+
+        <div class="timeline-container space-y-8 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800/60">
+
+          <!-- ViewSonic -->
+          <div class="work-item relative pl-8 group">
+            <div class="work-item-bullet absolute left-1 top-1.5 h-5 w-5 rounded-full bg-brand-50 dark:bg-slate-900 border-2 border-brand-500 flex items-center justify-center transition-all group-hover:scale-110">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
+            </div>
+
+            <div class="work-header flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="work-title text-base font-bold text-slate-950 dark:text-white flex items-center gap-2">
+                  ViewSonic
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-medium no-print">Current</span>
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Frontend Engineer</p>
+              </div>
+              <span class="work-meta text-xs sm:text-sm font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-md">
+                Nov 2024 – Present
+              </span>
+            </div>
+            <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc pl-4 leading-relaxed">
+              <li>Designed and implemented AI-assisted development workflows and internal automation tools centered around Claude Code (including custom skills), reducing core engineering process times by an average of 80%.</li>
+              <li>Introduced a Specification-Driven Development (SDD) paradigm to establish an AI-driven Spec-to-Code workflow, ensuring consistency and traceability across requirements, design, and code to improve delivery efficiency and quality.</li>
+              <li>Built an AI-oriented technical knowledge base integrated with OpenSpec schemas and Context Management mechanisms to structure architectures and guidelines, enabling automated context loading per task and reducing context-switching costs.</li>
+              <li>Refactored highly coupled legacy code by redesigning core modules and shared logic, improving system maintainability, testability, and the efficiency of subsequent feature extensions.</li>
+              <li>Built and delivered core product features spanning lesson preparation, classroom interaction, and post-class analytics for a global EdTech platform.</li>
+            </ul>
+          </div>
+
+          <!-- AlfredCamera -->
+          <div class="work-item relative pl-8 group">
+            <div class="work-item-bullet absolute left-1 top-1.5 h-5 w-5 rounded-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 flex items-center justify-center transition-all group-hover:border-brand-500"></div>
+
+            <div class="work-header flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="work-title text-base font-bold text-slate-950 dark:text-white">AlfredCamera</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Frontend Engineer</p>
+              </div>
+              <span class="work-meta text-xs sm:text-sm font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-md">
+                Nov 2022 – Oct 2024
+              </span>
+            </div>
+
+            <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc pl-4 leading-relaxed">
+              <li>Orchestrated a complete migration of the official website to Next.js, achieving a 90+ Core Web Vitals score and boosting organic traffic retention through SEO preservation.</li>
+              <li>Designed and implemented a WebRTC Data Channel solution, replacing legacy cloud storage. Reduced infrastructure costs by 40%.</li>
+              <li>Built a custom e-commerce platform using React, Vite, and Shopify, delivering a flexible architecture to handle complex business logic.</li>
+              <li>Automated deployment workflows via GitHub Actions, eliminating manual errors and streamlining the release process.</li>
+            </ul>
+          </div>
+
+          <!-- iStaging -->
+          <div class="work-item relative pl-8 group">
+            <div class="work-item-bullet absolute left-1 top-1.5 h-5 w-5 rounded-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 flex items-center justify-center transition-all group-hover:border-brand-500"></div>
+
+            <div class="work-header flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="work-title text-base font-bold text-slate-950 dark:text-white">iStaging</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Frontend Engineer</p>
+              </div>
+              <span class="work-meta text-xs sm:text-sm font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-md">
+                Jan 2022 – Oct 2022
+              </span>
+            </div>
+
+            <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc pl-4 leading-relaxed">
+              <li>Built and launched the primary web platform using Next.js, integrating complete SEO frameworks along with custom GA4 product analytical pipelines.</li>
+              <li>Engineered user dashboards and immersive VR product modules utilizing Three.js to maximize client interactions and visual experience.</li>
+              <li>Established robust CI/CD automations integrated across AWS cloud environments to streamline sprint cycles.</li>
+            </ul>
+          </div>
+
+          <!-- Cyuan You Computer -->
+          <div class="work-item relative pl-8 group">
+            <div class="work-item-bullet absolute left-1 top-1.5 h-5 w-5 rounded-full bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 flex items-center justify-center transition-all group-hover:border-brand-500"></div>
+
+            <div class="work-header flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <div>
+                <h3 class="work-title text-base font-bold text-slate-950 dark:text-white">Cyuan You Computer</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Frontend Engineer</p>
+              </div>
+              <span class="work-meta text-xs sm:text-sm font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-md">
+                Jun 2021 – Nov 2021
+              </span>
+            </div>
+
+            <ul class="mt-3 space-y-2 text-slate-600 dark:text-slate-300 text-sm list-disc pl-4 leading-relaxed">
+              <li>Leveraged Vue 2 and Vuetify to deliver operational interfaces, merchant management consoles, and corporate portals, accelerating overall feature iteration cycles.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section class="mt-8 border-t border-slate-100 dark:border-slate-800/80 pt-8">
+        <h2 class="text-sm font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase flex items-center gap-2 mb-4">
+          <i data-lucide="graduation-cap" class="h-4 w-4 no-print"></i> Education
+        </h2>
+
+        <div class="work-header flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+          <div>
+            <h3 class="work-title text-base font-bold text-slate-950 dark:text-white">
+              National Yunlin University of Science and Technology
+            </h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+              Bachelor of Business Administration (B.B.A.)
+            </p>
+          </div>
+          <span class="work-meta text-xs sm:text-sm font-semibold text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-md">
+            2015 – 2017
+          </span>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-10', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-10', 'opacity-0');
+      }, 3000);
+    }
+
+    function copyEmail() {
+      const emailText = "shinhuei1@gmail.com";
+      const tempInput = document.createElement("input");
+      tempInput.value = emailText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast("Email copied to clipboard!");
+        } else {
+          showToast("Copy failed, please copy manually.");
+        }
+      } catch (err) {
+        showToast("An error occurred while copying.");
+      }
+      document.body.removeChild(tempInput);
+    }
+    const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && isSystemDark)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</body>
+
+</html>

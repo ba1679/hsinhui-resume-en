@@ -165,19 +165,22 @@
     }
 
     .work-meta,
+    .project-meta,
     .education-meta {
       margin-top: 2px;
       color: var(--muted);
       font-size: 13px;
     }
 
-    .work-item ul {
+    .work-item ul,
+    .project-item ul {
       margin-top: 7px;
       padding-left: 20px;
       list-style-type: disc;
     }
 
-    .work-item li + li {
+    .work-item li + li,
+    .project-item li + li {
       margin-top: 5px;
     }
 
@@ -284,11 +287,11 @@
       }
 
       section {
-        margin-top: 9pt;
+        margin-top: 7pt;
       }
 
       h2 {
-        margin-bottom: 5pt;
+        margin-bottom: 4pt;
         font-size: 10pt;
         letter-spacing: 0.7pt;
       }
@@ -300,27 +303,31 @@
 
       h2,
       h3,
-      .work-meta {
+      .work-meta,
+      .project-meta {
         break-after: avoid;
       }
 
       .work-item + .work-item {
-        margin-top: 6pt;
+        margin-top: 5pt;
       }
 
       .work-meta,
+      .project-meta,
       .education-meta {
         margin-top: 1pt;
         font-size: 9pt;
       }
 
-      .work-item ul {
-        margin-top: 4pt;
+      .work-item ul,
+      .project-item ul {
+        margin-top: 3pt;
         padding-left: 13pt;
       }
 
-      .work-item li + li {
-        margin-top: 2pt;
+      .work-item li + li,
+      .project-item li + li {
+        margin-top: 1.5pt;
       }
 
       li,
@@ -339,6 +346,15 @@
 
       .education-item + .education-item {
         margin-top: 5pt;
+      }
+
+      .education-item h3,
+      .education-meta {
+        display: inline;
+      }
+
+      .education-meta::before {
+        content: " | ";
       }
     }
   </style>
@@ -402,7 +418,6 @@
           <ul>
             <li>Built and launched a <strong>Next.js</strong> web platform with SEO support and GA4 product analytics.</li>
             <li>Developed user dashboards and <strong>Three.js</strong>-based VR modules for interactive 3D experiences.</li>
-            <li>Established CI/CD workflows for applications deployed on <strong>AWS</strong>.</li>
           </ul>
         </div>
 
@@ -411,6 +426,18 @@
           <p class="work-meta">Frontend Engineer | <time datetime="2021-06">Jun 2021</time> - <time datetime="2021-11">Nov 2021</time></p>
           <ul>
             <li>Built operational interfaces, merchant management consoles, and corporate portals with <strong>Vue 2 and Vuetify</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Selected Projects</h2>
+        <div class="project-item">
+          <h3>Phin-Chhù | Interactive Floor Plan Learning App</h3>
+          <p class="project-meta"><a href="https://tw-house-floor-plan.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo: tw-house-floor-plan.vercel.app</a></p>
+          <ul>
+            <li>Built and deployed an interactive learning app for Taiwanese residential floor plans, integrating <strong>symbol search, contextual explanations, and diagram-based quizzes</strong>.</li>
+            <li>Designed a <strong>two-step selection flow</strong> with area zoom and candidate confirmation for navigating dense floor plans, alongside on-device learning progress tracking.</li>
           </ul>
         </div>
       </section>
@@ -433,7 +460,7 @@
         </div>
         <div class="education-item">
           <h3>National Taichung University of Science and Technology</h3>
-          <p class="education-meta">Department of International Trade and Business | 2010 - 2015</p>
+          <p class="education-meta">International Trade and Business | 2010 - 2015</p>
         </div>
       </section>
     </article>

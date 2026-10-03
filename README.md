@@ -1,30 +1,38 @@
-# Hsin-Hui Lai Resume
+# Hsin Hui Lai - English Resume
 
-This repository contains a polished frontend portfolio and resume page for Hsin-Hui Lai, a results-driven Frontend Engineer with 5+ years of experience.
+A single-column English resume focused on frontend architecture, cross-platform integration, and developer productivity.
 
-## About
+## Content
 
-Hsin-Hui specializes in React, Next.js, TypeScript, frontend architecture, and developer experience optimization. Their background includes building global-scale products, introducing AI-assisted development workflows, and improving system scalability with modern frontend patterns.
+The resume follows this reading order:
 
-## Highlights
+1. Name, title, and contact details
+2. Summary
+3. Experience
+4. Technical Skills
+5. Education
 
-- 5+ years as a Frontend Engineer with strong experience in React, Next.js, TypeScript, and modern state management.
-- Designed AI-powered internal tools and automation workflows to improve engineering efficiency.
-- Built WebRTC-based solutions and cross-platform web applications to reduce infrastructure cost and improve performance.
-- Led migration and optimization projects that improved SEO, usability, and deployment workflows.
+Experience emphasizes concrete technical work: WebView-to-Windows document export, Redux and RTK Query state management, classroom game synchronization, and WebRTC transfers that reduced infrastructure costs by 40%. It also covers leading a shared AI-assisted workflow for frontend and backend engineers, standardizing feature specs and task-specific context through OpenSpec and a project knowledge base, plus a full Next.js website rebuild that achieved a desktop PageSpeed Insights performance score of 90+.
 
-## Key Experience
+## Preview and Export
 
-- Current Frontend Engineer at ViewSonic, driving AI-assisted product development and specification-driven workflows.
-- Former Frontend Engineer at AlfredCamera, iStaging, and Cyuan You Computer.
-- Delivered solutions spanning e-commerce platforms, global EdTech products, VR experiences, and enterprise dashboards.
+Open `index.html` directly in a browser, or serve the repository locally:
+
+```sh
+python3 -m http.server 8000
+```
+
+Visit `http://localhost:8000` and use **Print / Save PDF**. Select A4 paper, use the stylesheet's default margins, and turn off the browser's headers and footers.
+
+The layout uses local system fonts and inline CSS, with no external stylesheet or icon dependencies. Print styles retain the email address and visible profile URLs, hide interactive controls, and use a single-column skills list.
+
+Before submitting an exported PDF, confirm that the text can be selected and copied in the intended reading order, and check the application system's imported fields.
+
+## Content Maintenance
+
+Add quantitative claims only when their scope and measurement are known. The resume distinguishes the desktop PageSpeed Insights performance score from Core Web Vitals. Keep workflow descriptions focused on their implementation approach and concrete technical scope. The unconfirmed 80% time reduction, 60% adoption, and quiz-type count remain omitted.
 
 ## Contact
 
 - Email: shinhuei1@gmail.com
 - GitHub: https://github.com/ba1679
-- Medium: https://medium.com/@shinhuei1
-
-## Repository
-
-The `index.html` file hosts the resume and portfolio page with a clean Tailwind-powered design and interactive contact features.

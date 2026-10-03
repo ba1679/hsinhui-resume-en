@@ -9,10 +9,13 @@ The resume follows this reading order:
 1. Name, title, and contact details
 2. Summary
 3. Experience
-4. Technical Skills
-5. Education
+4. Selected Projects
+5. Technical Skills
+6. Education
 
 Experience emphasizes concrete technical work: WebView-to-Windows document export, Redux and RTK Query state management, classroom game synchronization, and WebRTC transfers that reduced infrastructure costs by 40%. It also covers leading a shared AI-assisted workflow for frontend and backend engineers, standardizing feature specs and task-specific context through OpenSpec and a project knowledge base, plus a full Next.js website rebuild that achieved a desktop PageSpeed Insights performance score of 90+.
+
+Selected Projects features [Phin-Chhù](https://tw-house-floor-plan.vercel.app/), an interactive learning app for Taiwanese residential floor plans. The entry covers symbol search, contextual explanations, diagram-based quizzes, two-step symbol selection, and on-device learning progress tracking, with a link to the public demo.
 
 ## Preview and Export
 
